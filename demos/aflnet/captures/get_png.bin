@@ -1,0 +1,14 @@
+GET /civetweb_64x64.png HTTP/1.1
+Host: 172.17.0.3:8080
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:96.0) Gecko/20100101 Firefox/96.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+DNT: 1
+Connection: keep-alive
+Referer: http://172.17.0.3:8080/
+Sec-GPC: 1
+If-Modified-Since: Mon, 24 Jan 2022 11:38:01 GMT
+If-None-Match: "61ee8f99.3136"
+Cache-Control: max-age=0
+
