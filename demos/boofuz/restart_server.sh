@@ -1,4 +1,5 @@
 #!/bin/bash
+
 while ! ./server
 do
   sudo fuser -k 40000/tcp  

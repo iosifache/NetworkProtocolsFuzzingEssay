@@ -8,13 +8,16 @@
 
 /**
 
-	This program implements a simple protocol for writing data to a file or reading it from a file as follows
+	This program implements a simple protocol for writing data to a file or
+    reading it from a file as follows:
+
 	First Packet: 							<Username> + '\n'
 	Second Packet:							r| or w| + <FileName> + '\n'	
 	Third Packet if w method is used:  		<fileContents>
 
-	If read method is used client will receive a 512 byte len packet containing the file.
-	All comunication is ended by an b'End' message if no internal error has occured
+	If read method is used client will receive a 512 byte len packet containing
+    the file. All comunication is ended by an b'End' message if no internal
+    error has occured.
 
 */
 

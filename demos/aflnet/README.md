@@ -20,7 +20,7 @@
 5. Enable logging: `echo -e "\naccess_log_file /home/ubuntu/log.txt\n" >> /usr/local/etc/civetweb.conf`
 6. Create a script with the content of [`run_server.sh`](run_server.sh) that ensure the server's restart
 
-```
+```bash
 chmod +x run_server.sh
 ./run_server.sh
 ```
@@ -34,7 +34,7 @@ chmod +x run_server.sh
 2. Fuzz the server: `afl-fuzz -d -i captures -o results -x civetweb/fuzztest/http1.dict -N tcp://172.17.0.3/8080 -P HTTP -D 10000 -q 3 -s 3 -E -R /usr/local/bin/civetweb`
 3.  Wait some minutes
 
-```
+```bash
                       american fuzzy lop 2.56b (civetweb)
 
 ┌─ process timing ─────────────────────────────────────┬─ overall results ─────┐
@@ -63,7 +63,7 @@ chmod +x run_server.sh
 
 10. Inspect the logs to see the mutations in the network protocol (in this case, filenames and user agents)
 
-```
+```text
 [...]
 172.17.0.3 - - [24/Jan/2022:12:01:12 +0000] "GET /civetweb_64x64.png HTTP/1.1" 304 183 - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:96.0) Gecko/20100101 Firefhx//html,application/xhtml+xml,application/xml;q=0.9,
 image/avif,image/webp,*/*;q=0.8
@@ -74,7 +74,7 @@ image/avif,image/webp,*/*;q=0.8
 
 11. Check the results of the fuzzing session: `cat results/fuzzer_stats`
 
-```
+```text
 start_time        : 1643025982
 last_update       : 1643026079
 fuzzer_pid        : 17465
@@ -111,7 +111,7 @@ peak_rss_mb       : 2
 
 1. Modify the source code of `civetweb.c` to insert a vulnerable function definition
 
-```
+```c
 static unsigned char *
 get_user_agent(const struct mg_connection *conn)
 {
@@ -134,7 +134,7 @@ get_user_agent(const struct mg_connection *conn)
 
 2. Call the vulnerable function (on the line `15986` of the initial file)
 
-```
+```c
 /* Some extra buggy processing */
 char *processed_user_agent =  process_user_agent(user_agent);
 ```
@@ -142,7 +142,7 @@ char *processed_user_agent =  process_user_agent(user_agent);
 3. Build and run the server and the fuzzer as described in the steps above
 4. Wait for the crash of the server (just a few seconds)
 
-```
+```bash
 Loading config file /usr/local/etc/civetweb.conf
 CivetWeb V1.16 started on port(s) 8080 with web root [/usr/local/share/doc/civetweb]
 [..]
@@ -151,7 +151,7 @@ free(): invalid next size (normal)
 [..]
 ```
 
-```
+```text
                       american fuzzy lop 2.56b (civetweb)
 
 ┌─ process timing ─────────────────────────────────────┬─ overall results ─────┐
@@ -180,14 +180,14 @@ free(): invalid next size (normal)
 
 5. As the server is not multithreaded, it does not response on crash, so the crashes are hands which can be inspected as follows:
 
-```
+```bash
 ls results/replayable-hangs/
 id:000000,src:000000,op:havoc,rep:8
 ```
 
 6. Check the payload which triggers the vulnerability
 
-```
+```bash
 tail -1 log.txt 
 172.17.0.3 - - [24/Jan/2022:13:55:28 +0000] "GET /civetweb_64x64.png HTTP/1.1" 304 183 - Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:96.0) Gecko/20100101 Firefox/96.0��Accept: image/avif,im,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
 ```
