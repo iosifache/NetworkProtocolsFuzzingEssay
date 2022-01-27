@@ -40,13 +40,13 @@ Email: $^{1}$claudiu.ghenea@stud.acs.upb.ro, $^{2}$george\_andrei.iosif@stud.acs
 
 \begin{abstract}
 
-In the current days, manual analysis is no longer possible. The attacks surface was increasing in tandem with the size of the applications and their functionalities. This being said, this affirmation applies in the context of network protocols too. There were numerous protocols proposed and implemented at scale, on which the whole modern infrastructures (Internet, networks of IoT devices, SCADA systems) relies on. An assumption on which our paper is built is the fact that the network protocols are implemented in software. So a vulnerability in a protocol is basically a vulnerability in a program implementation. This paper demonstrates the effectiveness of the fuzzing, which is a technique mainly used in the vulnerability detection in programs, when applied to generate inputs that are sent via network to a server under test (abbreviated SUT), in order to discover security problems.
+In the current days, manual analysis is no longer possible. The attacks surface was increasing in tandem with the size of the applications and their functionalities. This being said, this affirmation applies in the context of network protocols too. There were numerous protocols proposed and implemented at scale, on which the whole modern infrastructures (Internet, networks of IoT devices, SCADA systems) relies on. An assumption on which our essay is built is the fact that the network protocols are implemented in software. So a vulnerability in a protocol is basically a vulnerability in a program implementation. This essay demonstrates the effectiveness of the fuzzing, which is a technique mainly used in the vulnerability detection in programs, when applied to generate inputs that are sent via network to a server under test (abbreviated SUT), in order to discover security problems.
 
 \end{abstract}
 
 \section{Introduction}
 
-In this paper, we are going to tackle the usage of fuzzing in the context of network protocols security. In the first chapters we are going to cover some general terminology of network protocols, briefly describe important parts of a network communication. After that we are going to provide a description of fuzzing, what is it, its categories, input formats and vulnerabilities that it has already discovered in the field.
+In this essay, we are going to tackle the usage of fuzzing in the context of network protocols security. In the first chapters we are going to cover some general terminology of network protocols, briefly describe important parts of a network communication. After that we are going to provide a description of fuzzing, what is it, its categories, input formats and vulnerabilities that it has already discovered in the field.
 
 Regarding fuzzing we will present two types of fuzzers, more specifically AFLNet which is a stateful mutational greybox fuzzer and boofuzz which is a stateful blackbox fuzzer, for each of them we have constructed and documented a proof of concept to showcase their utility and efficiency in finding bugs in a network protocol implementation.
 
@@ -221,7 +221,7 @@ The last method for finding vulnerabilities in the network context is by formal 
 
 \section{Conclusions}
 
-This paper demonstrates that the fuzzing, a technique used mainly for finding vulnerabilities in binaries, can be used with success for finding vulnerabilities in network protocols. This is possible because the network protocols are, at their root, only a mean by which processes (from the same host, via internal sockets, or externally, in a LAN) communicates in a structured way.
+This essay demonstrates that the fuzzing, a technique used mainly for finding vulnerabilities in binaries, can be used with success for finding vulnerabilities in network protocols. This is possible because the network protocols are, at their root, only a mean by which processes (from the same host, via internal sockets, or externally, in a LAN) communicates in a structured way.
 
 We offered two proof of concepts: one targeting a custom protocol (replaying on TCP) from a custom application with a blackbox smart fuzzer, boofuz, and another targeting an open source embeddable web server with a graybox dumb fuzzer, AFLNet. In the latter case, as no vulnerability was discovered, we manually introduced a heap buffer overflow in the processing of the user agent. In both scenarios, the fuzzers were able to detect the deliberately-introduced vulnerabilities from SUTs.
 

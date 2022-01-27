@@ -1,8 +1,8 @@
-# Network Protocols Fuzzing
+# Network Protocols Fuzzing Essay 📜
 
 ## Description 🖼️
 
-This repository contains an essay about the **usage of fuzzing for finding vulnerabilities in network protocols**. This was created for a course from Faculty of Automatic Control and Computers, University POLITEHNICA of Bucharest, namely "*Security Protocols*".
+This repository contains an essay about the **usage of fuzzing for finding vulnerabilities in network protocols** and **two proofs of concept** for using **boofuzz** and **AFLNet** to exeplify this kind of attacks. The repository was created for a course from Faculty of Automatic Control and Computers, University POLITEHNICA of Bucharest, namely "*Security Protocols*".
 
 ## Folders Structure 📁
 
@@ -17,7 +17,7 @@ The folder structure is as follows:
 |--------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | <a href="essay/essay.pdf"><kbd><img src="essay/preview.png" width="400px" alt="Essay preview"></kbd></a> | <a href="presentation/presentation.pdf"><kbd><img src="presentation/preview.png" width="400px" alt="Presentation preview"></kbd></a> |
 
-## Contributors
+## Contributors 🤝
 
 - Claudiu-Florentin GHENEA ([@Phineas09](https://github.com/Phineas09))
 - George-Andrei IOSIF ([@iosifache](https://github.com/iosifache))
